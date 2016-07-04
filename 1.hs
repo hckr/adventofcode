@@ -1,6 +1,7 @@
 convertChar :: Char -> Int
-convertChar '(' = 1
-convertChar _ = -1
+convertChar c | c == '('  =  1
+              | c == ')'  = -1
+              | otherwise =  0
 
 convertString :: [Char] -> [Int]
 convertString = map convertChar
@@ -15,7 +16,8 @@ instructionNrToEnterBasement = iter 1 0 where
             nr
         else
             iter (nr+1) newLevel xs
-        where newLevel = level + x
+        where
+            newLevel = level + x
 
 main = do
     input <- readFile "1.in"
