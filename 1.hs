@@ -7,7 +7,7 @@ convertString :: [Char] -> [Int]
 convertString = map convertChar
 
 countFloor :: [Int] -> Int
-countFloor = foldl (+) 0
+countFloor = sum
 
 instructionNrToEnterBasement :: [Int] -> Int
 instructionNrToEnterBasement = iter 1 0 where
