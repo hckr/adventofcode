@@ -1,15 +1,8 @@
+import Data.List
+
 replace :: Char -> Char -> Char -> Char
 replace a b c | c == a    = b
               | otherwise = c
-
-deleteFirst :: (Eq a) => a -> [a] -> [a]
-deleteFirst = iter [] where
-    iter result _ [] = result
-    iter result elem (x:xs) =
-        if elem == x then
-            result ++ xs
-        else
-            iter (result ++ [x]) elem xs
 
 extractDimensions :: [Char] -> [Int]
 extractDimensions line = read ("[" ++ (map (replace 'x' ',') line) ++ "]")
@@ -21,17 +14,13 @@ countNeededWrappingPaperArea [a, b, c] =
         side2 = a * c
         side3 = b * c
 
-accumulateNeededWrappingPaperArea :: Int -> [Char] -> Int
-accumulateNeededWrappingPaperArea acc line = acc + (countNeededWrappingPaperArea . extractDimensions) line
-
 countNeededRibbonLength :: [Int] -> Int
-countNeededRibbonLength list =
-    foldl (+) 0 (map (*2) (deleteFirst (maximum list) list)) + foldl (*) 1 list
-
-accumulateNeededRibbonLength :: Int -> [Char] -> Int
-accumulateNeededRibbonLength acc line = acc + (countNeededRibbonLength . extractDimensions) line
+countNeededRibbonLength dimensions = shortestDistanceAroundSides + bow where
+    shortestDistanceAroundSides = (sum $ take 2 $ sort dimensions) * 2
+    bow = product dimensions
 
 main = do
     input <- readFile "2.in"
-    print $ foldl accumulateNeededWrappingPaperArea 0 (lines input)
-    print $ foldl accumulateNeededRibbonLength 0 (lines input)
+    let listOfDimensions = map extractDimensions (lines input)
+    print $ sum $ map countNeededWrappingPaperArea listOfDimensions
+    print $ sum $ map countNeededRibbonLength listOfDimensions
