@@ -1,3 +1,3 @@
-My AdventOfCode.com solutions written in Haskell.
+My AdventOfCode.com solutions.
 
-[![Code Climate](https://codeclimate.com/github/hckr/adventofcode-haskell/badges/gpa.svg)](https://codeclimate.com/github/hckr/adventofcode-haskell)
+[![Code Climate](https://codeclimate.com/github/hckr/adventofcode/badges/gpa.svg)](https://codeclimate.com/github/hckr/adventofcode)
