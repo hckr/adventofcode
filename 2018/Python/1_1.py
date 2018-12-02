@@ -1,4 +1,4 @@
 #!/usr/bin/env python3
 import sys
 
-print(sum(int(line) for line in sys.stdin))
+print(sum(map(int, sys.stdin)))
