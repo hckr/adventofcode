@@ -20,7 +20,7 @@ instructionNrToEnterBasement = iter 1 0 where
             newLevel = level + x
 
 main = do
-    input <- readFile "1.in"
+    input <- readFile "../1.in"
     let instructions = convertString input
     print $ countFloor $ instructions
     print $ instructionNrToEnterBasement $ instructions

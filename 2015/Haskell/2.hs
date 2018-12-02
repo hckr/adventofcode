@@ -20,7 +20,7 @@ countNeededRibbonLength dimensions = shortestDistanceAroundSides + bow where
     bow = product dimensions
 
 main = do
-    input <- readFile "2.in"
+    input <- readFile "../2.in"
     let listOfDimensions = map extractDimensions (lines input)
     print $ sum $ map countNeededWrappingPaperArea listOfDimensions
     print $ sum $ map countNeededRibbonLength listOfDimensions
