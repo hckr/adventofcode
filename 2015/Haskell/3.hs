@@ -27,7 +27,7 @@ everyNth n (x:xs) = x : (everyNth n xd) where
 everyNth _ [] = []
 
 main = do
-    input <- readFile "../3.in"
+    input <- getContents
     let listOfCoordinates = map instructionToCoordinates input
     print $ length $ getVisitedHouses listOfCoordinates
     let santasList = everyNth 2 listOfCoordinates
