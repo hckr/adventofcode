@@ -9,22 +9,22 @@ def count_chars(line):
     return counts
 
 
-twos = 0
-threes = 0
+doubles = 0
+triples = 0
 
 for line in sys.stdin:
     line = line.strip()
     counts = count_chars(line)
-    has_twos = False
-    has_threes = False
+    has_doubles = False
+    has_triples = False
     for k, v in counts.items():
         if v == 2:
-            has_twos = True
+            has_doubles = True
         elif v == 3:
-            has_threes = True
-    if has_twos:
-        twos += 1
-    if has_threes:
-        threes += 1
+            has_triples = True
+    if has_doubles:
+        doubles += 1
+    if has_triples:
+        triples += 1
 
-print(twos * threes)
+print(doubles * triples)
