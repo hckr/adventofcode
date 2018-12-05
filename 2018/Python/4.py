@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 import sys
 import re
-from pprint import pprint
 
 log_re = re.compile(r'\[(\d{4}-\d{2}-\d{2}) (\d{2}):(\d{2})\] (.+)')
 logs = [tuple(log_re.search(line).groups()) for line in sys.stdin]
