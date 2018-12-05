@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 import sys
-import re
 
 
 def react(polymer):
@@ -31,14 +30,12 @@ def reduce(polymer, unit):
 
 
 input = sys.stdin.read().strip()
-
-# print(len(fully_react(input)))
+reacted_input = fully_react(input)
+print(len(reacted_input))
 
 unit_types = set(input.lower())
-
 lengths = []
-
 for unit in unit_types:
-    lengths.append(len(fully_react(reduce(input, unit))))
+    lengths.append(len(fully_react(reduce(reacted_input, unit))))
 
 print(min(lengths))
