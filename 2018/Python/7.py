@@ -20,6 +20,27 @@ def can_be_done(task, done_tasks):
     return True
 
 
+def receive_done_tasks(workers_time_left, workers_tasks, done_tasks):
+    for w, time in enumerate(workers_time_left):
+        if time > 0:
+            continue
+        if workers_tasks[w] is not None:
+            done_tasks.append(workers_tasks[w])
+            workers_tasks[w] = None
+
+
+def assign_tasks(workers_tasks, tasks_left, workers_time_left, done_tasks, time_func):
+    for w, task in enumerate(workers_tasks):
+        if task is not None:
+            continue
+        for task in tasks_left:
+            if can_be_done(task, done_tasks):
+                tasks_left.remove(task)
+                workers_tasks[w] = task
+                workers_time_left[w] = time_func(task)
+                break
+
+
 def order_tasks_workers(tasks, dependencies, workers=1, time_func=lambda task: 0):
     tasks_count = len(tasks)
     tasks_left = tasks[:]
@@ -28,19 +49,8 @@ def order_tasks_workers(tasks, dependencies, workers=1, time_func=lambda task: 0
     workers_time_left = [1] * workers
     time_elapsed = 0
     while len(done_tasks) < tasks_count:
-        for w, time in enumerate(workers_time_left):
-            if time == 0:
-                if workers_tasks[w] is not None:
-                    done_tasks.append(workers_tasks[w])
-                    workers_tasks[w] = None
-        for w, task in enumerate(workers_tasks):
-            if task is None:
-                for task in tasks_left:
-                    if can_be_done(task, done_tasks):
-                        tasks_left.remove(task)
-                        workers_tasks[w] = task
-                        workers_time_left[w] = time_func(task)
-                        break
+        receive_done_tasks(workers_time_left, workers_tasks, done_tasks)
+        assign_tasks(workers_tasks, tasks_left, workers_time_left, done_tasks, time_func)
         try:
             subtrahend = min([t for t in workers_time_left if t > 0])
             time_elapsed += subtrahend
@@ -48,8 +58,9 @@ def order_tasks_workers(tasks, dependencies, workers=1, time_func=lambda task: 0
             pass
         # print(time_elapsed, workers_tasks, done_tasks, workers_time_left, tasks_left)
         for w, time in enumerate(workers_time_left):
-            if time > 0:
-                workers_time_left[w] -= subtrahend
+            if time == 0:
+                continue
+            workers_time_left[w] -= subtrahend
     return done_tasks, time_elapsed
 
 
