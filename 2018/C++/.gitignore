@@ -1,0 +1,12 @@
+# ignore all
+*
+
+# unignore all with extensions
+!*.*
+# and Makefile
+!Makefile
+
+# unignore all dirs
+!*/
+
+*.exe
