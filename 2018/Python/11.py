@@ -49,4 +49,5 @@ def best_square_any_size(min_size, max_size):
     return (*coordinates, best_size)
 
 
+print(','.join(map(str, best_square(3)[0])))
 print(','.join(map(str, best_square_any_size(1, 300))))
