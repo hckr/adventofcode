@@ -15,8 +15,7 @@ int main() {
 
     // part two
     number frequency = 0;
-    auto previous_frequencies = std::unordered_set{frequency};
-    previous_frequencies.insert(frequency);
+    auto previous_frequencies = std::unordered_set<number>{frequency};
 
     while(1) {
         for (const auto& change : changes) {
