@@ -52,10 +52,13 @@ auto best_square_any_size(int min_size, int max_size) {
 int main(int argc, char const *argv[]) {
     std::cin >> grid_serial_number;
 
-    power_levels.reserve(300);
-    for (int x = 0; x < 300; ++x) {
-        power_levels[x].reserve(300);
-        for (int y = 0; y < 300; ++y) {
+    const int max_x = 300;
+    const int max_y = 300;
+
+    power_levels.reserve(max_x);
+    for (int x = 0; x < max_x; ++x) {
+        power_levels[x].reserve(max_y);
+        for (int y = 0; y < max_y; ++y) {
             power_levels[x][y] = power_level(x, y);
         }
     }
