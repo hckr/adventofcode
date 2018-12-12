@@ -63,8 +63,15 @@ int main(int argc, char const *argv[]) {
         }
     }
 
-    auto [ x, y, size ] = best_square_any_size(1, 300);
-    std::cout << x << "," << y << "," << size << "\n";
+    {
+        auto [ coords, _ ] = best_square(3);
+        auto [ x, y ] = coords;
+        std::cout << x << "," << y << "\n";
+    }
+    {
+        auto [ x, y, size ] = best_square_any_size(1, 300);
+        std::cout << x << "," << y << "," << size << "\n";
+    }
 
     return 0;
 }
