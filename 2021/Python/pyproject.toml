@@ -8,6 +8,8 @@ authors = ["hckr"]
 python = "^3.9"
 
 [tool.poetry.dev-dependencies]
+pytest = "^6.2.5"
+black = "^21.11b1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
