@@ -1,10 +1,16 @@
 import fileinput
+from typing import Optional
 
 import numpy as np
 
 
-def main():
-    input_iter = (line.strip() for line in fileinput.input())
+def main(input_path: Optional[str] = None):
+    """
+    >>> main('../4.in')
+    49860
+    24628
+    """
+    input_iter = (line.strip() for line in fileinput.input(input_path))
     numbers = [int(x) for x in next(input_iter).split(",")]
     boards = []
     try:

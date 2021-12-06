@@ -1,16 +1,20 @@
 import fileinput
 from collections import defaultdict
-from functools import partial
-from typing import Callable, List, TypeVar
+from typing import Callable, DefaultDict, Dict, List, Optional, TypeVar, Union
 
 import numpy as np
-from sspipe import p, px
+from sspipe import p, px  # type: ignore
 
 T = TypeVar("T")
 
 
-def main():
-    binary_numbers = [list(line.strip()) for line in fileinput.input()]
+def main(input_path: Optional[str] = None):
+    """
+    >>> main('../3.in')
+    852500
+    1007985
+    """
+    binary_numbers = [list(line.strip()) for line in fileinput.input(input_path)]
 
     # part 1
     num_length = len(binary_numbers[0])
@@ -38,7 +42,9 @@ def main():
     print(oxygen_generator_rating * co2_scrubber_rating)
 
 
-def select_nth_for_each_in(list_of_lists: List[List[T]], n: int) -> List[T]:
+def select_nth_for_each_in(
+    list_of_lists: Union[List[List[T]], np.ndarray], n: int
+) -> List[T]:
     """Create a new list by selecting the n-th element (counting from zero) of each sublist.
 
     >>> select_nth_for_each_in([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 0)
@@ -62,10 +68,10 @@ def most_common(values: List[T]) -> T:
     >>> most_common([1,1,2,3,4,4,4,5])
     4
     """
-    (most_common, _count) = sorted(
+    (value, _count) = sorted(
         count_occurences(values).items(), key=lambda x: x[1], reverse=True
     )[0]
-    return most_common
+    return value
 
 
 def least_common(values: List[T]) -> T:
@@ -77,18 +83,16 @@ def least_common(values: List[T]) -> T:
     >>> least_common([1,1,3,4,4,4,5])
     3
     """
-    (most_common, _count) = sorted(
-        count_occurences(values).items(), key=lambda x: x[1]
-    )[0]
-    return most_common
+    (value, _count) = sorted(count_occurences(values).items(), key=lambda x: x[1])[0]
+    return value
 
 
 def join_str(substrings: List[str], separator: str = "") -> str:
     return separator.join(substrings)
 
 
-def count_occurences(values: List[T]) -> T:
-    occurences = defaultdict(int)
+def count_occurences(values: List[T]) -> Dict[T, int]:
+    occurences: DefaultDict[T, int] = defaultdict(int)
     for v in values:
         occurences[v] += 1
     return occurences

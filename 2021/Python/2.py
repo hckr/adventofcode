@@ -1,8 +1,14 @@
 import fileinput
+from typing import Optional
 
 
-def main():
-    commands = [line.split() for line in fileinput.input()]
+def main(input_path: Optional[str] = None):
+    """
+    >>> main('../2.in')
+    1989014
+    2006917119
+    """
+    commands = [line.split() for line in fileinput.input(input_path)]
 
     # part 1
     horizontal = 0

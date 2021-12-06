@@ -1,8 +1,14 @@
 import fileinput
+from typing import Optional
 
 
-def main():
-    measurements = [int(line) for line in fileinput.input()]
+def main(input_path: Optional[str] = None):
+    """
+    >>> main('../1.in')
+    1266
+    1217
+    """
+    measurements = [int(line) for line in fileinput.input(input_path)]
 
     # part 1
     print(
