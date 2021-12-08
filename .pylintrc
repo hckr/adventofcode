@@ -1,6 +1,6 @@
 [MASTER]
 disable=invalid-name,missing-module-docstring,missing-function-docstring
-
+extension-pkg-whitelist=math
 
 [TYPECHECK]
 generated-members=sspipe.facade.Facade.*
