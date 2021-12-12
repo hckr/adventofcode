@@ -1,5 +1,5 @@
 [MASTER]
-disable=invalid-name,missing-module-docstring,missing-function-docstring
+disable=invalid-name,missing-module-docstring,missing-function-docstring,missing-class-docstring
 extension-pkg-whitelist=math
 
 [TYPECHECK]
