@@ -5,15 +5,15 @@ description = "Advent of Code 2021 implementations"
 authors = ["hckr"]
 
 [tool.poetry.dependencies]
-python = "^3.9,<3.11"
+python = "^3.10,<3.11"
 sspipe = "^0.1.16"
 numpy = "^1.21.4"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
-black = "^21.11b1"
+black = "^21.12b0"
 pylint = "^2.12.2"
-mypy = "^0.910"
+mypy = "^0.920"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
