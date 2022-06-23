@@ -7,7 +7,7 @@ authors = ["hckr"]
 [tool.poetry.dependencies]
 python = "^3.10,<3.11"
 sspipe = "^0.1.16"
-numpy = "^1.21.4"
+numpy = "^1.22.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
