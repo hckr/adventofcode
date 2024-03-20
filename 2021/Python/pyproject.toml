@@ -11,7 +11,7 @@ numpy = "^1.22.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
-black = "^21.12b0"
+black = "^24.3"
 pylint = "^2.12.2"
 mypy = "^0.920"
 
