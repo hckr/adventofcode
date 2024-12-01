@@ -57,7 +57,7 @@ def main(input_path: Optional[str] = None):
     for line in input_iter:
         if len(line) == 0:
             break
-        x, y = [int(x) for x in line.strip().split(",")]
+        x, y = [int(x) for x in line.split(",")]
         if x > max_x:
             max_x = x
         if y > max_y:

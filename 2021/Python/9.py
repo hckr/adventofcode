@@ -37,6 +37,11 @@ def main(input_path: Optional[str] = None):
     filter_low_points = (diff_top < 0) & (diff_right < 0) & (diff_bottom < 0) & (diff_left < 0)
     print(sum(heightmap[filter_low_points] + 1))
 
+    # print(len(list(zip(*np.where(filter_low_points)))))
+
+    # iterate over low points
+
+
 
 def filler(shape):
     return np.ones(shape) * -10
